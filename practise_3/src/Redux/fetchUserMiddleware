@@ -1,0 +1,16 @@
+import { userActions } from "./UserSlice";
+
+export const fetchUserMalware = () =>{
+    return async function (dispatch){
+        try{
+            dispatch(userActions.onPending());
+            const userResponse = await fetch('https://jsonplaceholder.typicode.com/users/2');
+            const userData = await userResponse.json();
+            dispatch(userActions.onFulfillment(userData));
+        }catch(err){
+            dispatch(userActions.onRejection(err));
+        }
+       
+
+    }
+}
