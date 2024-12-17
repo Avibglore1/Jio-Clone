@@ -24,7 +24,7 @@ async function emailSender(templatePath, recieverEmail, toReplaceObject) {
             secure: true,
             auth: {
                 user: "avinashkumarofficial95@gmail.com",
-                pass: 'tqmn psbp eagf etrk'
+                pass: process.env.email_password
             }
         }
         const msg = {
