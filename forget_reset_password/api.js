@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const UserModel = require('./userModel');
 const emailSender = require('./DynamicEmailSender');
+const {getCurrentMovies, getTopRatedMovies} = require('./movieController');
 // const {getCurrentMovies, getTopRatedMovies} = require('./')
 
 dotenv.config();
@@ -191,6 +192,8 @@ app.post("/api/auth/login", loginHandler);
 app.post("/api/auth/signup", signupHandler);
 app.patch("/api/auth/forgetPassword", forgetPasswordHandler);
 app.patch("/api/auth/resetPassword/:userId", resetPasswordHandler);
+app.get("/api/movies/currentPlaying", getCurrentMovies);
+app.get("/api/movies/topRated", getTopRatedMovies);
 
 
 app.listen(3001, function () {
